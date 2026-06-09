@@ -1,166 +1,38 @@
-# Diabetes Prediction ML System 🏥
+Diabetes Prediction ML System
 
-**Production-ready machine learning pipeline** that predicts diabetes from medical data.
+A simple, production‑ready machine learning pipeline that predicts diabetes using medical data. It includes EDA, preprocessing, model training, evaluation, and a Flask API packaged with Docker.
 
-## 📊 Quick Stats
+Key Points
 
-- **Dataset**: 768 patient records
-- **Classes**: 65% No Diabetes, 35% Diabetes (imbalanced)
-- **Best Model**: XGBoost
-- **F1-Score**: 0.71 (handles class imbalance)
-- **Deployment**: Docker + Flask API
+Dataset: 768 patient records
 
-## 🚀 Quick Start (30 seconds)
+Best model: XGBoost (F1‑Score 0.71)
 
-### Option 1: Local Python
-\`\`\`bash
-# Clone
-git clone https://github.com/yourusername/diabetes-prediction-ml.git
-cd diabetes-prediction-ml
+Handles class imbalance
 
-# Install
-pip install -r requirements.txt
+Fully containerized API
 
-# Run API
-python src/main.py
-\`\`\`
+How to Run
+Clone the repo, install requirements, and start the API, or run it directly with Docker.
 
-### Option 2: Docker
-\`\`\`bash
-docker build -t diabetes-model:1.0 .
-docker run -p 5000:5000 diabetes-model:1.0
-\`\`\`
+Features
 
-## 📮 Make a Prediction
+Clean ML pipeline
 
-\`\`\`bash
-curl -X POST http://localhost:5000/predict \
-  -H "Content-Type: application/json" \
-  -d '{
-    "Pregnancies": 6,
-    "Glucose": 148,
-    "BloodPressure": 72,
-    "BMI": 33.6,
-    "DiabetesPedigreeFunction": 0.627,
-    "Age": 50
-  }'
-\`\`\`
+Model comparison (LogReg, Random Forest, XGBoost)
 
-**Response:**
-\`\`\`json
-{
-  "prediction": 1,
-  "probability": 0.78,
-  "result": "Diabetic"
-}
-\`\`\`
+StandardScaler preprocessing
 
-## 📁 Project Structure
+REST API for predictions
 
-| File | Purpose |
-|------|---------|
-| **src/eda.py** | Data exploration & visualization |
-| **src/preprocessing.py** | Data cleaning, scaling, splitting |
-| **src/models.py** | Train & compare 3 models |
-| **src/main.py** | Flask REST API |
-| **models/diabetes_model.pkl** | Trained XGBoost model |
-| **data/diabetes.csv** | Original dataset |
-| **Dockerfile** | Container setup |
+Docker deployment
 
-## 🤖 Models Trained
+What I Learned
 
-| Model | F1-Score | Status |
-|-------|----------|--------|
-| Logistic Regression | 0.65 | Baseline |
-| Random Forest | 0.68 | Good |
-| **XGBoost** | **0.71** | **✅ Selected** |
+Handling imbalanced datasets
 
-## 🔧 Technology Stack
+When scaling matters
 
-- **Language**: Python 3.9
-- **ML**: scikit-learn, XGBoost
-- **API**: Flask
-- **Container**: Docker
-- **Data**: Pandas, NumPy
+Comparing multiple ML models
 
-## 📈 Pipeline
-
-\`\`\`
-Raw Data → EDA → Preprocessing → Feature Scaling → Model Training → Evaluation → Deployment
-\`\`\`
-
-### Step 1: EDA (Exploratory Data Analysis)
-- Load 768 patient records
-- Check for missing/invalid values
-- Analyze feature correlations
-- Detect class imbalance (ratio 0.54:1)
-- Visualize distributions
-
-### Step 2: Preprocessing
-- Drop weakly correlated features (SkinThickness, Insulin)
-- Remove rows with invalid zeros
-- Split: 80% train, 20% test (stratified)
-- Scale features using StandardScaler
-
-### Step 3: Model Training
-- Train Logistic Regression (baseline)
-- Train Random Forest (ensemble)
-- Train XGBoost (gradient boosting)
-- Compare using F1-Score
-- Select best (XGBoost)
-
-### Step 4: Deployment
-- Save model as pickle
-- Create Flask API
-- Containerize with Docker
-- Ready for production
-
-## 🎯 Key Features
-
-✅ **Complete Pipeline**: EDA → Preprocessing → Modeling → Deployment
-✅ **Imbalance Handling**: Uses F1-Score (not Accuracy) for imbalanced data
-✅ **Feature Scaling**: StandardScaler (mean=0, std=1)
-✅ **Model Comparison**: 3 models tested, best selected
-✅ **Production API**: Flask REST endpoint
-✅ **Containerization**: Docker for easy deployment
-✅ **Clean Code**: Modular, well-documented
-
-## 💡 What I Learned
-
-1. **Class Imbalance**: Why F1-Score > Accuracy for imbalanced data
-2. **Feature Scaling**: When to scale (Logistic Regression) vs. not (Tree models)
-3. **Model Comparison**: Systematic comparison of multiple models
-4. **Production Deployment**: API + Docker for real-world use
-5. **Pickle Serialization**: Saving models for inference
-
-## 🚀 Next Steps
-
-- [ ] Add unit tests
-- [ ] GitHub Actions CI/CD
-- [ ] Deploy to AWS/GCP
-- [ ] Add monitoring (predictions, accuracy)
-- [ ] Automated retraining pipeline
-
-## 📚 How to Understand the Code
-
-1. Start with **README** (you're reading it!)
-2. Read **src/eda.py** (data exploration)
-3. Read **src/preprocessing.py** (cleaning + scaling)
-4. Read **src/models.py** (model training)
-5. Read **src/main.py** (API)
-6. Try **docker build** and **docker run**
-
-## 🤔 Questions?
-
-- How does class imbalance affect model?
-- Why use F1-Score instead of Accuracy?
-- How does StandardScaler work?
-- Why tree models don't need scaling?
-
-Check code comments for detailed explanations!
-
-
-
-**Built by**: Your Name
-**Date**: 2024
-**Contact**: your.email@example.com | LinkedIn: /in/yourprofile
+Deploying ML models with Flask and Docker
